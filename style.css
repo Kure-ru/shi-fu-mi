@@ -1,0 +1,12 @@
+html {
+    background-color: antiquewhite;
+}
+
+h1 {
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,3 +1,14 @@
+//Add an event listener to the buttons 
+const buttons = document.querySelectorAll('button');
+
+console.log(buttons);
+
+
+for (const button of buttons) {
+    button.addEventListener('click', playRound())
+    console.log(button)
+   };
+
 //function to return randomly "rock", "paper" or "scissors"
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -11,7 +22,7 @@ function playRound(playerSelection, computerSelection) {
   // in case computer selection is the same than player selection
   if (computerSelection === playerSelection) {
     console.log("It's a tie! Try again!")
-    return;
+    return undefined;
   } else if
     // Computer plays rock and Player plays paper
     ((computerSelection === 'rock') && (playerSelection === 'paper')) {
@@ -45,7 +56,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-//play 5 rounds of game and keep score + reports a winner or looser at the end
+/* //play 5 rounds of game and keep score + reports a winner or looser at the end
 function game() {
   //set the score to 0
   let playerScore = 0;
@@ -55,29 +66,36 @@ function game() {
   for (let i = 0; i < 5; i++) {
     if (i < 5) {
       console.log("Turn" + i);
-      alert(`The score is ${computerScore} for the computer and ${playerScore} for you`)
+      alert(`The score is ${computerScore} for the computer and ${playerScore} for you`);
       let playerSelection = prompt("Please choose between rock, paper, and scissors");
       // Make your function’s playerSelection parameter case-insensitive 
       playerSelection = playerSelection.toLowerCase();
       console.log(playerSelection);
       let computerChoice = getComputerChoice();
 
-    // if it true, +1 point for player
+      // if its a tie, one more round
+      let round = playRound(playerSelection, computerChoice);
+      if (round == undefined) {
+        i -= 1;
+      }
+      // if it true, +1 point for player
       if (playRound(playerSelection, computerChoice)) {
         playerScore += 1;
-    // if false, +1 point for computer
+        // if false, +1 point for computer
       } else {
         computerScore += 1;
       }
 
-    } else if (i >= 5) {
+    } else {
       console.log("Game over");
-      alert(`The score is ${computerScore} for the computer and ${playerScore} for you`)
+    }
+    // tell who is the winner
+    if (playerScore > computerScore) {
+      alert("Congratulations! You win!")
+    } else {
+      alert('You lost! Try again...')
     }
   }
 }
-
-/*the function returns a string that declares the winner of the round
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));*/
+*/
 
